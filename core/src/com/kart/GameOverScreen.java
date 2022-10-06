@@ -14,15 +14,18 @@ public class GameOverScreen implements Screen {
     private Texture roadImage;
     private Texture youLouseImage;
     private Texture pressEnterImage;
+    private Texture backImage;
     private Rectangle road;
     private Rectangle youLouse;
     private Rectangle pressEnter;
+    private Rectangle back;
     public GameOverScreen(final MyKartRacingGame game){
         this.game = game;
 
         roadImage = new Texture("pics/Road.png");
         youLouseImage = new Texture("pics/you_louse.png");
         pressEnterImage = new Texture("pics/press_enter1.png");
+        backImage = new Texture("pics/game_road_back.png");
 
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 1200, 840);
@@ -38,6 +41,10 @@ public class GameOverScreen implements Screen {
         pressEnter = new Rectangle();
         pressEnter.x = 424;
         pressEnter.y = 372;
+
+        back = new Rectangle();
+        back.x = 360;
+        back.y = 0;
     }
     @Override
     public void show() {
@@ -52,6 +59,7 @@ public class GameOverScreen implements Screen {
 
         game.batch.begin();
         game.batch.draw(roadImage, road.x, road.y);
+        game.batch.draw(backImage, back.x, back.y);
         game.batch.draw(youLouseImage, youLouse.x, youLouse.y);
         game.batch.draw(pressEnterImage, pressEnter.x, pressEnter.y);
         game.batch.end();
